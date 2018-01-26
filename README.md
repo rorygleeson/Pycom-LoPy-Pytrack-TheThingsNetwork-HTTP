@@ -1,4 +1,4 @@
-"Lopy-GPS-ThingsNetwork-Dragino" 
+"LoPy-GPS-ThingsNetwork-Dragino" 
 
 
 This project uses a LoRa device (Pycom LoPy) and a GPS sensor (via Pycom PyTracker board) to send a LoRa message to a single channel LoRa
