@@ -1,5 +1,5 @@
 This folder contains the code for the Pycom LoPy.
-Its uses the PyCom LoPy with the Pytracker board (for the GPS sensor).
+Its uses the PyCom LoPy with the Pytrack board (for the GPS sensor).
 
 
 Step 1: Ensure your Pycom Firmware Update tool is up to date, upgrade if required.
