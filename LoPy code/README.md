@@ -10,4 +10,4 @@ Step 3: Update the LoPy firmware
 
 Step 4: Upload the files to the LopY, do not forget to upload the library files, and the pycoproc.py should go in main directory. 
 
-Note: The file is used to configure TTN server HTTP integration, paste this into TTN HTTP payload formats custom decoder window. 
+Note: The file TTNDecoder.txt is used to configure TTN server HTTP integration, paste this into the TTN HTTP payload formats custom decoder window. 
