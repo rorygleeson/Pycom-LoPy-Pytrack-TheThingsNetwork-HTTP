@@ -10,8 +10,8 @@ from pytrack import Pytrack
 py = Pytrack()
 
 def convert_latlon(latitude, longitude):
-# latitude = -7.005941
-# longitude = -68.1192
+# latitude = -37.8597
+# longitude = 144.8126
 
    lat = int((latitude + 90)*10000)
    lon = int((longitude + 180)*10000)
@@ -54,31 +54,27 @@ s.setsockopt(socket.SOL_LORA, socket.SO_DR, 3)
 # make the socket non-blocking 
 s.setblocking(False)
 print("delay 2 seconds")
-time.sleep(2)
+time.sleep(2)    # <- emm, not sure why I have this..will clean up soon..
 print("setup done, send message")
 print("first check coords, print lat and lon here")
 print(lat,lon)
+
 # lat and lon are floating points, this will not be supported in the TTN HTTP API integration, if you want to decode the payload...
 # convert to array of bytes in function convert_latlon
 gps_array = convert_latlon(lat, lon)
 print("converted array is..")
 print(gps_array)
 
-# s.send(b''+str(lat)+','+str(lon)) <- sent as string , this wont work with TTN backend HTTP integration, if you want to decode the date..
-# s.send("%f,%f" % (lat, lon)) <- sent as float , this wont work with TTN backend HTTP integration, if you want to decode the date..
-
-
 # Send coordinates
 
 s.send(gps_array) # <- sent as array of bytes, we then can decode as appropriate in TTN payload configuration..
 print("sent message, wait for 10 secs")
-time.sleep(10)   # <- delay to ensure message sent before going to sleep
+time.sleep(10)   # <- delay to ensure message sent before going to sleep, improve this...
 
-
-
-
-# Sleep
+# Deep Sleep
+# Since this project uses the Pytracker shield, there is no need to use the sleep shield. When using the Pytracker shield, deep sleep is achived 
+# using py.go_to_sleep. Hence make sure the correct library is used !!! See lib folder. 
 
 print("now sleep 120 seconds..")	 
-py.setup_sleep(120) # sleep for 120 seconds, then it will wake up and repeat
+py.setup_sleep(120) # deep sleep for 120 seconds, change this to suit your own needs and respect TTN fair usage policy. 
 py.go_to_sleep()
